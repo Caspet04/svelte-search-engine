@@ -1,8 +1,9 @@
 <script>
+	import SearchForm from './components/SearchForm.svelte';
+	import ResultList from './components/ResultList.svelte';
+
 	import { writable } from 'svelte/store';
 	let result = writable();
-
-	import SearchForm from './components/SearchForm.svelte';
 </script>
 
 <main>
@@ -11,8 +12,12 @@
 	{#await $result}
 		Wait
 	{:then result}
-		{JSON.stringify(result)}
+		{#if result && "data" in result && "items" in result.data}
+			<ResultList items={result.data.items} />
+			{console.log(result.data.items)}
+		{/if}
 	{:catch error}
+		<h1>An <span style="color:red;">Error</span> Has Ocurred!</h1>
 		{JSON.stringify(error)}
 	{/await}
 </main>

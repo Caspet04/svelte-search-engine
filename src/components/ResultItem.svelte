@@ -8,11 +8,13 @@
 
 <div class="item">
     <a class="url" href={data.url}>{data.name}</a>
-    {#if data.description}
-        <div class="description">
+    <div class="description">
+        {#if data.description}
             {clampLength(150, data.description)}
-        </div>
-    {/if}
+        {:else}
+            <i>No description found</i>
+        {/if}
+    </div>
     <h6 class="publishing">
         Published {data.published_at.split('T')[0]}
         {#if data.publisher}
@@ -22,5 +24,17 @@
 </div>
 
 <style>
+    .item {
+        width: 800px;
 
+        border: 1px solid black;
+    }
+
+    .item:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    h6 {
+        margin-top: 2px;
+    }
 </style>

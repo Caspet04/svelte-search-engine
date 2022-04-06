@@ -6,8 +6,8 @@
     }
 </script>
 
-<div class="item">
-    <a class="url" href={data.url}>{data.name}</a>
+<div class="result-item nes-container with-title">
+    <p class="title"><a href={data.url}>{data.name}</a></p>
     <div class="description">
         {#if data.description}
             {clampLength(150, data.description)}
@@ -15,26 +15,29 @@
             <i>No description found</i>
         {/if}
     </div>
-    <h6 class="publishing">
+    <div class="publishing">
         Published {data.published_at.split('T')[0]}
         {#if data.publisher}
             by {data.publisher}
         {/if}
-    </h6>
+    </div>
 </div>
 
 <style>
-    .item {
-        width: 800px;
+    .nes-container.with-title .title {
+        display: block;
 
-        border: 1px solid black;
+        color: blue;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        width: min-content;
+        max-width: 100%;
     }
 
-    .item:not(:last-child) {
-        margin-bottom: 20px;
-    }
-
-    h6 {
-        margin-top: 2px;
+    .result-item:not(:last-child) {
+        margin-bottom: 32px;
     }
 </style>

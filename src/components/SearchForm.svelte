@@ -17,33 +17,23 @@
     }
 </script>
 
-<form id="search-form" on:submit|preventDefault={() => {
+<form on:submit|preventDefault={() => {
     $result = search();
 }}>
-    <input type="text" bind:value={query} />
-    <button type="submit">🔎︎</button>
+    <input type="text" class="nes-input" bind:value={query} />
+    <button type="submit" class="nes-btn">Search</button>
 </form>
 
 <style>
     form {
         display: flex;
 
-        border: 1px solid grey;
-        border-radius: 10px;
-        overflow: hidden;
-
         width: min-content;
     }
 
-    form * {
-        margin: 0;
-
-        outline: none;
-        border: none;
-        border-radius: 0;
-    }
-
     form input {
+        margin-right: 16px;
+
         width: 250px;
     }
 </style>

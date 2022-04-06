@@ -9,15 +9,13 @@
 
 <main>
 	<div id="background"></div>
-
-	<div id="bar">
+	<div id="bar" class="nes-container">
 		{#if $result != undefined}
 			<SearchForm bind:result={result} bind:query={query} />
 		{/if}
 	</div>
-
 	{#if $result == undefined}
-		<div class="center fill-height">
+		<div class="center-both fill-height">
 			<SearchForm bind:result={result} bind:query={query} />
 		</div>
 	{:else}
@@ -40,65 +38,38 @@
 </main>
 
 <style>
+	:global(body) {
+		margin: 0;
+		padding: 0;
+	}
+
 	:global(main) {
+		width: 100%;
 		height: 100%;
 	}
 
-	:global(body) {
-		padding: 0;
-		margin: 0;
-	}
-
-	#background {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		
-		background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-		animation: gradient 10s ease infinite;
-		background-size: 400% 400%;
-
-		z-index: -10;
-	}
-
-	@keyframes gradient {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	.center {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
 	#bar {
+		padding: 8px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 
-		position: sticky;
-		top: 0;
-		bottom: calc(100vh - 40px);
-		left: 0;
-		right: 0;
-
-		height: 40px;
-		max-height: 40px;
-
-		background-color: grey;
+		height: 72px;
 	}
 
-	.fill-height {
-		height: calc(100% - 40px);
+	.center-both {
+		height: 100%;
+		width: 100%;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.center {
+		width: 100%;
+
+		display: flex;
+		justify-content: center;
 	}
 </style>

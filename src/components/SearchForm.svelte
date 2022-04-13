@@ -23,19 +23,19 @@
     $result = search();
 }}>
     <input type="text" class="nes-input" bind:value={query} />
-    <button type="submit" class="nes-btn">Search</button>
+    <!-- <button type="submit" class="nes-btn">Search</button> -->
 </form>
 
 <style>
     form {
         display: flex;
 
-        width: min-content;
+        min-width: 250px;
+        width: 100%;
+        margin: 0;
     }
 
     form input {
-        margin-right: 16px;
-
-        width: 250px;
+        width: 100%;
     }
 </style>

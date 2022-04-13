@@ -15,6 +15,7 @@
 		tiny: 0.7
 	};
 
+	let innerWidth;
 	let scrollY;
 	let scrollRates = [
 		0.2, 0.15, 0.1
@@ -25,7 +26,7 @@
 	}
 </script>
 
-<svelte:window bind:scrollY={scrollY}/>
+<svelte:window bind:scrollY={scrollY} bind:innerWidth={innerWidth} />
 
 <main>
 	<div id="star-layer-background" class="background pixel-art" />
@@ -45,7 +46,11 @@
 			<div id="search-container" class="nes-container is-dark">
 				<h1 id="logo-header">
 					Telescope
-					<img class="large-icon pixel-art" src="./assets/LargeTelescopeIcon/large_telescope_icon_1.png" width="32" height="32" alt="">
+					{#if innerWidth > 600}
+						<img class="large-icon pixel-art" src="./assets/LargeTelescopeIcon/large_telescope_icon_1.png" width="32" height="32" alt="">
+					{:else}
+						<img class="small-icon pixel-art" src="./assets/SmallTelescopeIcon/small_telescope_icon.png" width="16" height="16" alt="">
+					{/if}
 				</h1>
 				<SearchForm bind:result bind:query />
 			</div>
@@ -184,6 +189,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	@media screen and (max-width: 600px) {
+		#search-container h1 {
+			text-align: center;
+		}
 	}
 
 </style>

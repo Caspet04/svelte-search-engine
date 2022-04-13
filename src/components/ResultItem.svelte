@@ -1,4 +1,6 @@
 <script>
+	import '../css/colorPalette.css';
+
     export let data;
 
     function clampLength(maxLength, text) {
@@ -6,7 +8,7 @@
     }
 </script>
 
-<div class="result-item nes-container with-title">
+<div class="result-item nes-container with-title is-dark">
     <p class="title"><a href={data.url}>{data.name}</a></p>
     <div class="description">
         {#if data.description}
@@ -24,10 +26,15 @@
 </div>
 
 <style>
+    .nes-container.with-title {
+        background-color: var(--nes-darkblue);
+    }
+
     .nes-container.with-title .title {
         display: block;
 
         color: blue;
+        background-color: var(--nes-darkblue);
 
         overflow: hidden;
         text-overflow: ellipsis;

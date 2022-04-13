@@ -6,8 +6,10 @@
     export let query = "";
 
     async function search() {
-        const response = await fetch(`https://demo.dataverse.org/api/search?q=${query}`);
+        const response = await fetch(`https://demo.dataverse.org/api/search?q=${query}&per_page=1000`);
         const jsonResponse = await response.json();
+
+        // await new Promise(r => setTimeout(r, 100000));
 
         if (response.ok) {
             return jsonResponse;
